@@ -14,8 +14,9 @@ const Navbar = () => {
             <Link>blog</Link>
             <Link>faq</Link>
         </div>
-        <div className='border'>
-            this is an avater
+        <div>
+            <button className='px-2 py-1 bg-green-200 rounded mr-3'>Log In</button>
+            <button className='px-2 py-1 bg-green-200 rounded'>Register</button>
         </div>
       </nav>
     );
