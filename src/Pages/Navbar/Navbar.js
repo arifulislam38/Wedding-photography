@@ -15,8 +15,8 @@ const Navbar = () => {
             <Link>faq</Link>
         </div>
         <div>
-            <button className='px-2 py-1 bg-green-200 rounded mr-3'>Log In</button>
-            <button className='px-2 py-1 bg-green-200 rounded'>Register</button>
+            <button className='px-2 py-1 bg-green-200 rounded mr-3'><Link to='/login'>Log In</Link></button>
+            <button className='px-2 py-1 bg-green-200 rounded'><Link to='/register'>Register</Link></button>
         </div>
       </nav>
     );

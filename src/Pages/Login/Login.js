@@ -1,13 +1,18 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImage from '../../assets/wedding-1.jpg';
 import { AuthProvider } from '../../Context/AuthContext';
-
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
 
     const {login, googleLogin, setLoading} = useContext(AuthProvider);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -17,17 +22,62 @@ const Login = () => {
         login(email,password)
         .then(result =>{
             const user = result.user;
-            setLoading(false);
-        })
-        .catch(error => console.error(error))
-    };
+
+            const currentUser = {
+                    email: user.email
+                };
+
+            fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        
+                        if(data.success){
+                            localStorage.setItem('access-token', data.token);
+                            toast.success('successfully login');
+                            navigate(from, { replace: true });
+                            setLoading(false);
+                        }else{
+                            toast.error('CanNot log in user')
+                        }
+                    });    
+         })
+            .catch(error => console.error(error))
+        };
 
     const googlesignin = () =>{
         googleLogin()
         .then(result => {
             const user = result.user;
-            setLoading(false)
-        })
+           const currentUser = {
+                    email: user.email
+                };
+                
+            fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        
+                        if(data.success){
+                            localStorage.setItem('access-token', data.token);
+                            toast.success('successfully login');
+                            navigate(from, { replace: true });
+                            setLoading(false);
+                        }else{
+                            toast.error('CanNot log in user')
+                        }
+                    });    
+         })
         .catch(error => console.error(error))
     }
     return (

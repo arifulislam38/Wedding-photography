@@ -46,6 +46,7 @@ const AuthContext = ({children}) => {
     };
 
     const authinfo = {
+        loading,
         setLoading,
         user,
         createUser,
