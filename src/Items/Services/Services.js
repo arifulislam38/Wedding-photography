@@ -4,7 +4,7 @@ import image2 from '../../assets/wedding-2.jpg';
 import image3 from '../../assets/wedding-3.jpg';
 const Services = () => {
     return (
-        <div className='w-[90%] mx-auto  mb-20'>
+        <div className='w-[90%] mx-auto  mb-44 relative'>
 
             <div className='mb-10 text-semibold font-serif w-1/2'>
                 <h1 className='text-5xl mb-4 text-yellow-50'>My Services</h1>
@@ -39,6 +39,7 @@ const Services = () => {
             </div>
             </div>
             </div>
+            <button className='text-2xl font-semibold font-serif bg-yellow-200 p-3 rounded absolute right-0  mt-4'>View All Services</button>
         </div>
     );
 };
