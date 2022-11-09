@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {Table, Checkbox} from 'flowbite-react';
+import { AuthProvider } from '../../Context/AuthContext';
 
 const Reviews = () => {
+
+    const {user} = useContext(AuthProvider);
     const [reviews, setReviews] = useState([]);
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        .then(res => res.json())
+        .then(data => {
+            setReviews(data.data)
+        })
+    },[user?.email]);
 
 
     return (
@@ -40,7 +51,11 @@ const Reviews = () => {
     
                         {
                             reviews?.map(review => {
-                                return <Table.Row className="bg-[#01141F]  w-full ">
+                                return <Table.Row key={review._id} className="bg-[#01141F]  w-full ">
+
+                        <Table.Cell className='text-xl text-white pl-12'>
+                            <button className='px-3 rounded border'>X</button>
+                        </Table.Cell>
                         
                         <Table.Cell className="whitespace-nowrap font-medium text-white  flex  items-center gap-3 mr-4">
                             <img className='w-[50px] h-[50px] rounded-full' src={review.image} alt="" />
@@ -51,6 +66,9 @@ const Reviews = () => {
                             {review.details}
                         </Table.Cell>
                         
+                        <Table.Cell className='text-xl text-white'>
+                            <button className='px-3 rounded border'>Edit`</button>
+                        </Table.Cell>
                         
                         </Table.Row>
                             })
