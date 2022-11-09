@@ -29,7 +29,7 @@ const Services = () => {
             
 
             {
-                services.map(service => { 
+                services?.map(service => { 
                     return <div key={service._id} className='rounded-md w-full h-auto relative -skew-x-12'>
                     <img className='w-full  rounded-md' src={service.image} alt="" />
                     <div className=' text-yellow-50  w-full p-4  flex flex-col gap-3 bg-[rgba(192,192,12,0.1)]'>
@@ -49,7 +49,7 @@ const Services = () => {
 
             
             </div>
-            <button className='text-2xl font-semibold font-serif bg-yellow-200 p-3 rounded absolute right-16  mt-4 -skew-x-12'>View All Services</button>
+            <button className='text-2xl font-semibold font-serif bg-yellow-200 p-3 rounded absolute right-16  mt-4 -skew-x-12'><Link to='/services'>View All Services</Link></button>
         </div>
     );
 };
