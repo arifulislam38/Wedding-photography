@@ -89,43 +89,43 @@ const ServiceDetails = () => {
                     </form>
 
                         {
-                 reviews?.length > 0 &&  <Table className='w-full mt-4'>
-  <Table.Head>
+                 reviews?.length > 0 &&  <Table className='w-full mt-4 '>
+                     <Table.Head className='bg-yellow-50'>
     
-    <Table.HeadCell>
-      User
-    </Table.HeadCell>
-    
-    <Table.HeadCell>
-      Review
-    </Table.HeadCell>
-    
-    
-  </Table.Head>
+                                <Table.HeadCell>
+                                     User
+                                </Table.HeadCell>
+                                
+                                <Table.HeadCell>
+                                Review
+                                </Table.HeadCell>
+                                
+                                
+                                </Table.Head>
 
 
-  <Table.Body className="divide-y">
+                    <Table.Body className="divide-y">
     
-    {
-        reviews.map(review => {
-            return <Table.Row className="bg-[#394e42]  w-full ">
-      
-      <Table.Cell className="whitespace-nowrap font-medium text-white  flex  items-center gap-3 mr-4">
-        <img className='w-[50px] h-[50px] rounded-full' src={review.image} alt="" />
-        <div>{review.email}</div>
-      </Table.Cell>
-      
-      <Table.Cell className='text-xl text-white'>
-        {review.details}
-      </Table.Cell>
-      
-      
-    </Table.Row>
-        })
-    }
+                        {
+                            reviews.map(review => {
+                                return <Table.Row className="bg-[#01141F]  w-full ">
+                        
+                        <Table.Cell className="whitespace-nowrap font-medium text-white  flex  items-center gap-3 mr-4">
+                            <img className='w-[50px] h-[50px] rounded-full' src={review.image} alt="" />
+                            <div>{review.email}</div>
+                        </Table.Cell>
+                        
+                        <Table.Cell className='text-xl text-white'>
+                            {review.details}
+                        </Table.Cell>
+                        
+                        
+                        </Table.Row>
+                            })
+                        }
     
-  </Table.Body>
-</Table>
+                    </Table.Body>
+                </Table>
                 }
                 </div>
    
