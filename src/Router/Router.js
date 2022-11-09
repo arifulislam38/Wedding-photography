@@ -26,12 +26,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                element: <ProtectedPage><Services></Services></ProtectedPage>
+                element:<Services></Services>
             },
             {
                 path: '/service/:id',
                 loader: ({params})=> fetch(`http://localhost:5000/service/${params.id}`),
-                element: <ProtectedPage><ServiceDetails></ServiceDetails></ProtectedPage>
+                element: <ServiceDetails></ServiceDetails>
             }
         ]
     }
