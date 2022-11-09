@@ -24,7 +24,7 @@ const Register = () => {
     
     return (
         <div>
-            <h1 className='text-7xl font-bold font-serif text-center text-yellow-100 mb-28'>Welcome to the Register page</h1>
+            <h1 className='text-7xl font-bold font-serif text-center text-yellow-100 mb-28 pt-24'>Welcome to the Register page</h1>
             <div className='grid grid-cols-2 gap-8 p-8 items-center justify-center w-[80%] mx-auto'>
                 <div>
                     <img src={loginImage} alt="" />
