@@ -1,10 +1,10 @@
 import React from 'react';
 import toast from 'react-hot-toast';
-import { Navigate, useLoaderData } from 'react-router-dom';
+import { Navigate, useLoaderData, useNavigate } from 'react-router-dom';
 
 const Update = () => {
     const data = useLoaderData();
-
+    const navigate = useNavigate();
     const handleSubmit = event =>{
         event.preventDefault();
 
@@ -20,8 +20,8 @@ const Update = () => {
         .then(res => res.json())
         .then(data => {
             if(data.success){
-                <Navigate to='/reviews' replace></Navigate>
-                toast.success('success')
+               navigate('/reviews');
+                toast.success('success');
             }
         })
         
