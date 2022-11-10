@@ -1,8 +1,8 @@
+import { Table } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
-import {Table, Checkbox, Modal} from 'flowbite-react';
-import { AuthProvider } from '../../Context/AuthContext';
 import toast from 'react-hot-toast';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { AuthProvider } from '../../Context/AuthContext';
 // import Button from 'react-dom';
 
 const Reviews = () => {
@@ -13,7 +13,7 @@ const Reviews = () => {
     const [modal, setModal] = useState(false);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+        fetch(`https://wedding-photography-123.vercel.app/reviews?email=${user?.email}`,{
            headers: {
                 authorization: `Bearer ${localStorage.getItem('access-token')}`
             }
@@ -28,7 +28,7 @@ const Reviews = () => {
     const handleDelete = (id) =>{
         const proceed = window.confirm('Are you sure, you want to delete this review?');
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://wedding-photography-123.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

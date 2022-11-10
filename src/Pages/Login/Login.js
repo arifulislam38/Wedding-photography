@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImage from '../../assets/wedding-1.jpg';
 import { AuthProvider } from '../../Context/AuthContext';
-import toast from 'react-hot-toast';
 
 
 const Login = () => {
@@ -27,7 +27,7 @@ const Login = () => {
                     email: user.email
                 };
 
-            fetch('http://localhost:5000/jwt', {
+            fetch('https://wedding-photography-123.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -58,7 +58,7 @@ const Login = () => {
                     email: user.email
                 };
                 
-            fetch('http://localhost:5000/jwt', {
+            fetch('https://wedding-photography-123.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

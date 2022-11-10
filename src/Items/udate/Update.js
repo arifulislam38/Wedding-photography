@@ -1,6 +1,6 @@
 import React from 'react';
 import toast from 'react-hot-toast';
-import { Navigate, useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const Update = () => {
     const data = useLoaderData();
@@ -10,7 +10,7 @@ const Update = () => {
 
         const text = event.target.text.value;
 
-        fetch(`http://localhost:5000/updates/${data.data._id}`,{
+        fetch(`https://wedding-photography-123.vercel.app/updates/${data.data._id}`,{
             method: "PATCH",
             headers:{
                 "content-type" : "application/json"

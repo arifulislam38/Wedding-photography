@@ -1,8 +1,8 @@
+import { Table } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthProvider } from '../../Context/AuthContext';
-import {Table, Checkbox} from 'flowbite-react';
 const ServiceDetails = () => {
      
     const service = useLoaderData();
@@ -16,7 +16,7 @@ const ServiceDetails = () => {
 
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/review?name=${name}`)
+        fetch(`https://wedding-photography-123.vercel.app/review?name=${name}`)
         .then(res => res.json())
         .then(data => {
             setReviews(data.data)
@@ -41,7 +41,7 @@ const ServiceDetails = () => {
         };
         console.log(review)
 
-        fetch('http://localhost:5000/review',{
+        fetch('https://wedding-photography-123.vercel.app/review',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

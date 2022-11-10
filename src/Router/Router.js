@@ -4,7 +4,6 @@ import Main from "../Layouts/Main/Main";
 import AddService from "../Pages/AddService/AddService";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
-import ProtectedPage from "../Pages/ProtectedPage/ProtectedPage";
 import Register from "../Pages/Register/Register";
 import Reviews from "../Pages/Reviews/Reviews";
 import ServiceDetails from "../Pages/serviceDetails/ServiceDetails";
@@ -33,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/service/:id',
-                loader: ({params})=> fetch(`http://localhost:5000/service/${params.id}`),
+                loader: ({params})=> fetch(`https://wedding-photography-123.vercel.app/service/${params.id}`),
                 element: <ServiceDetails></ServiceDetails>
             },
             {
@@ -42,7 +41,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/update/:id',
-                loader: async({params})=>await fetch(`http://localhost:5000/update/${params.id}`),
+                loader: async({params})=>await fetch(`https://wedding-photography-123.vercel.app/update/${params.id}`),
                 element: <Update></Update>
             },
             {

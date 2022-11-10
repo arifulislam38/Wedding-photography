@@ -14,7 +14,7 @@
 //       image : form.image.value
 //     };
 
-//     fetch('http://localhost:5000/product', {
+//     fetch('https://wedding-photography-123.vercel.app/product', {
 //       method : "POST",
 //       headers: {
 //         'content-type' : "application/json"
@@ -40,7 +40,7 @@
 
 
 //   const handleDelete = id =>{
-//     fetch(`http://localhost:5000/product/${id}`, {
+//     fetch(`https://wedding-photography-123.vercel.app/product/${id}`, {
 //       method : "DELETE",  
 //     })
 //     .then(res => res.json())
@@ -67,7 +67,7 @@
 //   const navigate = useNavigate();
 
 //   useEffect(()=> {
-//     fetch('http://localhost:5000/product')
+//     fetch('https://wedding-photography-123.vercel.app/product')
 //     .then(res => res.json())
 //     .then(data => {
 //       if(data.success){
