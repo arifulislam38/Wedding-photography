@@ -108,7 +108,7 @@ const ServiceDetails = () => {
     
                         {
                             reviews.map(review => {
-                                return <Table.Row className="bg-[#01141F]  w-full ">
+                                return <Table.Row key={review._id} className="bg-[#01141F]  w-full ">
                         
                         <Table.Cell className="whitespace-nowrap font-medium text-white  flex  items-center gap-3 mr-4">
                             <img className='w-[50px] h-[50px] rounded-full' src={review.image} alt="" />

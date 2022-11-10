@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+import Update from "../Items/udate/Update";
 import Main from "../Layouts/Main/Main";
+import AddService from "../Pages/AddService/AddService";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import ProtectedPage from "../Pages/ProtectedPage/ProtectedPage";
@@ -37,6 +39,15 @@ const router = createBrowserRouter([
             {
                 path: '/reviews',
                 element: <Reviews></Reviews>
+            },
+            {
+                path: '/update/:id',
+                loader: async({params})=>await fetch(`http://localhost:5000/update/${params.id}`),
+                element: <Update></Update>
+            },
+            {
+                path: '/addservice',
+                element: <AddService></AddService>
             }
         ]
     }
