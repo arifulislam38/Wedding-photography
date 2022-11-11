@@ -46,6 +46,8 @@ In the service details page you will see
 *** also use
     tailwind css
     daisyui component library
-  ### my server side link ['https://web-server-woad.vercel.app/']
+  ### my server side link ['https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-arifulislam38']
 
-  ### my client side link is ['']
+  ### my client side link is ['https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-arifulislam38']
+
+  ### Live side link is ['https://wedding-photography-aaba3.web.app']
