@@ -16,7 +16,7 @@ const Services = () => {
         .then(data => {
             setServices(data.data);
             setSpinner(false);
-            console.log(data.data)
+           
         })
     },[]);
 

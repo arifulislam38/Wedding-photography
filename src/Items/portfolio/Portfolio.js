@@ -4,7 +4,6 @@ import image3 from '../../assets/wedding-3.jpg';
 import image1 from '../../assets/wedding-1.jpg';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import { ImEnlarge2 } from 'react-icons/im';
 
 const Portfolio = () => {
     return (

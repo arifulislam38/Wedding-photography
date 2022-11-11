@@ -1,32 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext,  useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { BsSun, BsMoonStarsFill } from 'react-icons/bs';
 import { FaBars, FaUser } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
-// import logo from '../../images/learning-guru.png';
 import { AuthProvider } from '../../Context/AuthContext';
 
 
 const Navbar = () => {
 
-    const [value, setValue] = useState('light');
+    
 
     const {user , logOut} = useContext(AuthProvider);
 
     const [open, setOpen] = useState(false);
 
-useEffect(()=> {
-    document.getElementsByTagName("html")[0].setAttribute("data-theme", value);
-}, [value]);
 
-    const changeTheme = () => {
-        if (value === 'light'){
-            setValue('dark');
-        }
-        else{
-            setValue('light');
-        }
-    };
+
+    
 
     const handleLogOut = () => {
         logOut()
@@ -37,7 +26,7 @@ useEffect(()=> {
         <nav className={` pt-10 flex justify-between items-center w-full bg-[#01141F] h-[70px] px-10 shadow-gray-300 ${open? 'mb-72' : 'mb-4'} border-b-1`}>
           <div>
             <Link to='/' className='lg:text-5xl sm:text-4xl text-2xl text-yellow-100 font-serif sm:text-start md:flex lg:flex xl:flex '>Wedding Photo</Link>
-            {/* <Link to='/'><img className='rounded-full w-[50px] h-[50px] md:hidden lg:hidden xl:hidden sm:block bg-orange-200' src={logo} alt="" /></Link> */}
+            
           </div>
 
 
