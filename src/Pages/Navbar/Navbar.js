@@ -31,7 +31,7 @@ const Navbar = () => {
 
 
             
-            <div className={`lg:text-xl md:text-xl text-lg flex gap-4 absolute md:static ${open? 'top-72 hover:border flex flex-col bg-[#01141F] ml-[-40px] w-full': 'top-[-400px]'}`}>
+            <div className={`lg:text-xl md:text-xl text-lg flex gap-4 absolute md:static ${open? 'top-20 hover:border flex flex-col bg-[#01141F] ml-[-40px] w-full': 'top-[-400px]'}`}>
                             
                            {user ?
                             
@@ -55,15 +55,18 @@ const Navbar = () => {
 
 
 
-          <div className={`lg:text-xl md:text-xl text-lg flex gap-4 absolute md:static ${open? 'top-20 flex flex-col bg-[#01141F] ml-[-40px] w-full': 'top-[-400px]'}`} >
+          <div className={`lg:text-xl md:text-xl text-lg flex gap-4 absolute md:static ${open? 'top-[138px] flex flex-col bg-[#01141F] ml-[-40px] w-full': 'top-[-400px]'}`} >
 
               <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/services' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>Services</NavLink></button>
 
               <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/reviews' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>My Reviews</NavLink></button>
 
               {
-                user && 
+                user ? 
                   <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/addservice' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>Add Service</NavLink></button>
+
+                  :
+                  <></>
               }
 
               <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/blog' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>Blog</NavLink></button>

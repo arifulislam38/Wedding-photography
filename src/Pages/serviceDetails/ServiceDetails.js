@@ -67,7 +67,7 @@ const ServiceDetails = () => {
 
     return (
         <div className='py-40 px-10'>
-            <div className='grid grid-cols-2 gap-8'>
+            <div className='grid lg:grid-cols-2 gap-8'>
                 <div className='flex flex-col gap-5 p-2'>
                     <img className='rounded' src={image} alt="" />
                     <div className='flex justify-between  items-center'>

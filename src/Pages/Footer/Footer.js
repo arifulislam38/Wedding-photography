@@ -7,7 +7,7 @@ const Footer = () => {
 <footer className=' mt-5 bg-[#021B29]'>
     <div className= "p-9"> 
         <div className="w-[90%] mx-auto">
-            <div className="flex justify-between items-center">
+            <div className="lg:flex justify-between items-center">
                 <div className="">
                     <div className="text-start">
                         <p className="mb-2 text-xl text-gray-200">Click to Join </p>

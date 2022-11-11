@@ -130,7 +130,7 @@ const Reviews = () => {
                         <Table.Cell className='text-xl text-white'>
                             
 
-                                  <button><Link to={`/update/${review._id}`}>edit</Link></button>
+                                  <button className='px-3 rounded border'><Link to={`/update/${review._id}`}>Update</Link></button>
 
                         </Table.Cell>
                         

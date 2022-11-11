@@ -87,24 +87,24 @@ const Login = () => {
         .catch(error => console.error(error))
     }
     return (
-        <div>
+        <div >
             <h1 className='text-7xl font-bold font-serif text-center text-yellow-100 mb-32 pt-24 overflow-hidden'>Welcome to the Login page</h1>
-            <div className='grid lg:grid-cols-2 gap-8 p-8 items-center justify-center w-[80%] mx-auto'>
+            <div className='grid lg:grid-cols-2 gap-8 p-8 items-center justify-center lg:w-[85%] mx-auto'>
                 <div className='sm:mb-5'>
                     <img src={loginImage} alt="" />
                 </div>
-                <div className=''>
-                    <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
+                <div className='sm:w-full sm:p-8'>
+                    <form onSubmit={handleSubmit} className='sm:w-full flex flex-col gap-5'>
                         
-                        <input className='w-[80%] mx-auto p-4 bg-transparent border rounded text-yellow-50' type="email" name='email' placeholder='Your Email' />
+                        <input className='lg:w-[80%] w-full mx-auto p-4 bg-transparent border rounded text-yellow-50' type="email" name='email' placeholder='Your Email' />
 
-                        <input className='w-[80%] mx-auto p-4 bg-transparent border rounded text-yellow-50' type="password" name='password' placeholder='Password' />
+                        <input className='lg:w-[80%] w-full mx-auto p-4 bg-transparent border rounded text-yellow-50' type="password" name='password' placeholder='Password' />
 
-                        <button type="submit" className='w-[80%] mx-auto text-xl text-yellow-50 font-serif font-bold p-4 border rounded'>Log In</button>
+                        <button type="submit" className='lg:w-[80%] w-full mx-auto text-xl text-yellow-50 font-serif font-bold p-4 border rounded'>Log In</button>
 
-                        <button onClick={googlesignin} className='w-[80%] mx-auto text-xl text-yellow-50 font-serif font-bold p-4 border rounded'>Log In with Google</button>
+                        <button onClick={googlesignin} className='lg:w-[80%] w-full mx-auto text-xl text-yellow-50 font-serif font-bold p-4 border rounded'>Log In with Google</button>
 
-                        <p className='text-xl font-serif text-gray-200 w-[80%] mx-auto'>New to this site? <Link to='/register' className='text-yellow-50 underline'>Create an account</Link></p>
+                        <p className='text-xl font-serif text-gray-200 lg:w-[80%] w-full mx-auto'>New to this site? <Link to='/register' className='text-yellow-50 underline'>Create an account</Link></p>
                     </form>
                 </div>
             </div>

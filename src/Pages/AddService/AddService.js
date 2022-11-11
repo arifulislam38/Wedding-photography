@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Context/AuthContext';
 import UseTitle from '../../Items/Title/Title';
 
 const AddService = () => {
     const {user} = useContext(AuthProvider);
-
+    const navigate = useNavigate();
     UseTitle('Add Service');
 
      const handleSubmit = event =>{
@@ -31,8 +32,9 @@ const AddService = () => {
         .then(res=> res.json())
         .then(data => {
             if(data.success){
-                
-                toast.success(data.message)
+                event.target.reset();
+                toast.success('successfully added service');
+                navigate('/services');
             }
         })
     }
@@ -40,8 +42,8 @@ const AddService = () => {
 
 
     return (
-        <div className='w-full h-screen flex justify-center items-center'>
-            <form className='w-1/2 p-4 text-2xl flex flex-col gap-5 border rounded' onSubmit={handleSubmit}>
+        <div className='w-full h-screen flex justify-center items-center p-8'>
+            <form className='lg:w-1/2 w-full p-4 text-2xl flex flex-col gap-5 border rounded' onSubmit={handleSubmit}>
                 <input className='p-2 rounded w-full' type="text" name='name' placeholder='Service Name' required />
 
                 <input className='p-2 rounded w-full' type="text" name='price' placeholder='Service Price' required/>
