@@ -1,8 +1,12 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import UseTitle from '../Title/Title';
 
 const Update = () => {
+
+    UseTitle('update');
+    
     const data = useLoaderData();
     const navigate = useNavigate();
     const handleSubmit = event =>{
@@ -21,7 +25,7 @@ const Update = () => {
         .then(data => {
             if(data.success){
                navigate('/reviews');
-                toast.success('success');
+                toast.success('successfully Updated');
             }
         })
         
@@ -30,8 +34,8 @@ const Update = () => {
 
 
     return (
-        <div className='pt-28 w-full h-screen'>
-            <form onSubmit={handleSubmit} className='w-[50%] mx-auto flex flex-col gap-5 border p-4 rounded'>
+        <div className='py-32 sm:my-10 w-full h-screen flex justify-center items-center'>
+            <form onSubmit={handleSubmit} className='w-1/2 sm:w-[70%] flex flex-col gap-5 border p-4 rounded'>
                 <textarea className='w-full rounded text-2xl font-semibold' name="text" id="" cols="30" rows="10"/>
                 <button className='p-4 border text-2xl font-serif bg-yellow-100 rounded' type="submit">Update</button>
             </form>

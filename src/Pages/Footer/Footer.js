@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-<footer className=' mt-5 bg-[#01141F]'>
+<footer className=' mt-5 bg-[#021B29]'>
     <div className= "p-9"> 
         <div className="w-[90%] mx-auto">
             <div className="flex justify-between items-center">

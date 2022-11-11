@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthProvider } from '../../Context/AuthContext';
+import UseTitle from '../../Items/Title/Title';
 
 const AddService = () => {
     const {user} = useContext(AuthProvider);
+
+    UseTitle('Add Service');
 
      const handleSubmit = event =>{
         event.preventDefault();
@@ -37,8 +40,8 @@ const AddService = () => {
 
 
     return (
-        <div className='w-full h-screen pt-28'>
-            <form className='w-1/2 h-1/2 mx-auto shadow shadow-lg p-4 text-2xl flex flex-col gap-5 border rounded' onSubmit={handleSubmit}>
+        <div className='w-full h-screen flex justify-center items-center'>
+            <form className='w-1/2 p-4 text-2xl flex flex-col gap-5 border rounded' onSubmit={handleSubmit}>
                 <input className='p-2 rounded w-full' type="text" name='name' placeholder='Service Name' required />
 
                 <input className='p-2 rounded w-full' type="text" name='price' placeholder='Service Price' required/>
@@ -47,7 +50,7 @@ const AddService = () => {
 
                 <input className='p-2 rounded w-full' type="text" name='image' placeholder='Image url' required/>
 
-                <button className='border p-3 text-2xl w-full text-white' type='submit'>Add Service</button>
+                <button className='border p-3 text-2xl w-full text-white rounded' type='submit'>Add Service</button>
             </form>
         </div>
     );

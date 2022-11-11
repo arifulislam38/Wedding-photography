@@ -3,9 +3,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthProvider } from '../../Context/AuthContext';
+import UseTitle from '../../Items/Title/Title';
 const ServiceDetails = () => {
      
     const service = useLoaderData();
+
+    
 
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -14,6 +17,7 @@ const ServiceDetails = () => {
 
     const {name, price, description, image} = service.data;
 
+    UseTitle(name);
 
     useEffect(()=>{
         fetch(`https://wedding-photography-123.vercel.app/review?name=${name}`)
@@ -52,6 +56,7 @@ const ServiceDetails = () => {
         .then(data => {
             if(data.success){
                 setLoading(!loading)
+                event.target.reset();
                 toast.success(data.message)
             }
         })
@@ -72,8 +77,13 @@ const ServiceDetails = () => {
                     <p className='text-xl font-serif text-yellow-50 '>{description}</p>
                     <button className='text-2xl text-white font-semibold font-serif p-4 bg-yellow-300 rounded'>Buy Package</button>
                 </div>
+
+
+
                 <div className='w-full p-2'>
-                    <form onSubmit={handleSubmit} className='w-full flex flex-col justify-center gap-5'>
+                    {
+                        user? 
+                        <form onSubmit={handleSubmit} className='w-full flex flex-col justify-center gap-5'>
                         <select className='w-full bg-gray-200 rounded p-4 text-xl border-none' name="option" id='' required >
                             <option value="excellent">Excellent</option>
                             <option value="good" >Good</option>
@@ -81,12 +91,17 @@ const ServiceDetails = () => {
                         <textarea className=' w-full bg-gray-200 rounded p-4 text-xl border-none' rows={5} cols='70' name='textarea' required></textarea>
                         <button type="submit" className='p-3 text-2xl bg-yellow-50 rounded' disabled={user? false: true}>Give your review</button>
 
-                        {
-                            !user?.uid && <p className='text-xl text-yellow-50 font-semibold'>Plz <Link className='text-yellow-200 underline' to='/login'>Login</Link> to submit your review</p>
-                        }
-
+                       
+                            
 
                     </form>
+
+                    :
+                        <div className='w-full flex justify-center items-center'>
+                            <p className='text-3xl py-40 text-yellow-50 font-semibold'>Plz <Link className='text-yellow-200 underline' to='/login'>Login</Link> to submit your review</p>
+                        </div>
+
+                    }
 
                         {
                  reviews?.length > 0 &&  <Table className='w-full mt-4 '>

@@ -1,18 +1,22 @@
-import { Table } from 'flowbite-react';
+import { Spinner, Table } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthProvider } from '../../Context/AuthContext';
-// import Button from 'react-dom';
+import UseTitle from '../../Items/Title/Title';
 
 const Reviews = () => {
 
     const {user} = useContext(AuthProvider);
     const [reviews, setReviews] = useState([]);
     const [loader, setLoader] = useState(false);
-    const [modal, setModal] = useState(false);
+
+    const [spinner, setSpinner] = useState(true);
+
+    UseTitle('My Reviews');
 
     useEffect(()=>{
+        setSpinner(true)
         fetch(`https://wedding-photography-123.vercel.app/reviews?email=${user?.email}`,{
            headers: {
                 authorization: `Bearer ${localStorage.getItem('access-token')}`
@@ -20,7 +24,14 @@ const Reviews = () => {
         })
         .then(res => res.json())
         .then(data => {
-            setReviews(data.data)
+            if(data.success){
+                setReviews(data.data)
+                setSpinner(false)
+            }
+            else{
+                toast.error(data.message)
+                setSpinner(false)
+            }
         })
     },[user?.email,loader]);
 
@@ -51,6 +62,15 @@ const Reviews = () => {
 
     return (
         <div className='pt-28 relative'>
+            <h1 className='text-5xl text-yellow-100 font-serif font-semibold text-center mb-10'>Your all reviews are available here</h1>
+
+            <div className={`mt-20 w-full h-full justify-center flex flex-wrap items-center gap-2 ${spinner ? 'block' : 'hidden'}`}>
+                    <Spinner
+                            aria-label="Extra large spinner example"
+                            size="xl"
+                        />
+            </div>
+
             {
                 reviews?.length > 0 ?
 
@@ -63,6 +83,10 @@ const Reviews = () => {
     
                                 <Table.HeadCell>
                                      User
+                                </Table.HeadCell>
+
+                                <Table.HeadCell>
+                                     Name
                                 </Table.HeadCell>
                                 
                                 <Table.HeadCell>
@@ -95,6 +119,10 @@ const Reviews = () => {
                             <div>{review.email}</div>
                         </Table.Cell>
                         
+                        <Table.Cell className='text-xl text-white'>
+                            {review.name}
+                        </Table.Cell>
+
                         <Table.Cell className='text-xl text-white'>
                             {review.details}
                         </Table.Cell>

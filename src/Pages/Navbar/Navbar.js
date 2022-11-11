@@ -1,45 +1,92 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { BsSun, BsMoonStarsFill } from 'react-icons/bs';
+import { FaBars, FaUser } from 'react-icons/fa';
+import { ImCross } from 'react-icons/im';
+// import logo from '../../images/learning-guru.png';
 import { AuthProvider } from '../../Context/AuthContext';
+
 
 const Navbar = () => {
 
-    const {logOut, user} = useContext(AuthProvider);
-    
-    const handlelogOut = () =>{
-      logOut()
-      .then()
-      .then()
+    const [value, setValue] = useState('light');
+
+    const {user , logOut} = useContext(AuthProvider);
+
+    const [open, setOpen] = useState(false);
+
+useEffect(()=> {
+    document.getElementsByTagName("html")[0].setAttribute("data-theme", value);
+}, [value]);
+
+    const changeTheme = () => {
+        if (value === 'light'){
+            setValue('dark');
+        }
+        else{
+            setValue('light');
+        }
     };
 
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    };
     return (
-      <nav className='flex justify-between items-center px-20 h-[80px] bg-slate-400 opacity-40 z-10 absolute top-0 w-full'>
-        <div>
-            <button className='px-2 py-1 bg-green-200 rounded mr-3'><Link to='/'>image</Link></button>
-        </div>
-        <div>
-            <button className='px-2 py-1 bg-green-200 rounded mr-3'><Link to='/services'>Services</Link></button>
-            <button className='px-2 py-1 bg-green-200 rounded mr-3'><Link to='/reviews'>Reviews</Link></button>
+        <nav className={` pt-10 flex justify-between items-center w-full bg-[#01141F] h-[70px] px-10 shadow-gray-300 ${open? 'mb-72' : 'mb-4'} border-b-1`}>
+          <div>
+            <Link to='/' className='lg:text-5xl sm:text-4xl text-2xl text-yellow-100 font-serif sm:text-start md:flex lg:flex xl:flex '>Wedding Photo</Link>
+            {/* <Link to='/'><img className='rounded-full w-[50px] h-[50px] md:hidden lg:hidden xl:hidden sm:block bg-orange-200' src={logo} alt="" /></Link> */}
+          </div>
+
+
             
-            <button className='px-2 py-1 bg-green-200 rounded mr-3'><Link to='/blog'>Blog</Link></button>
-            <button className='px-2 py-1 bg-green-200 rounded mr-3'><Link to='/addservice'>Add Service</Link></button>
-        </div>
-        <div>
-          {
-            user? 
-            <>
-              <button onClick={handlelogOut} className='px-2 py-1 bg-green-200 rounded mr-3'>Log Out</button>
-              <img className='w-[55px] h-[55px] rounded-full inline' src={user.photoURL} alt="" />
-            </>
-            :
-            <>
-              <button className='px-2 py-1 bg-green-200 rounded mr-3'><Link to='/login'>Log In</Link></button>
-              <button className='px-2 py-1 bg-green-200 rounded'><Link to='/register'>Register</Link></button>
-            </>
-          }
-            
-        </div>
-      </nav>
+            <div className={`lg:text-xl md:text-xl text-lg flex gap-4 absolute md:static ${open? 'top-72 hover:border flex flex-col bg-[#01141F] ml-[-40px] w-full': 'top-[-400px]'}`}>
+                            
+                           {user ?
+                            
+                           <div className='flex gap-3 justify-center items-center w-full'>
+                           
+                            {user.photoURL ? 
+                              <img title={user.displayName} className='w-[50px] h-[50px] rounded-full border border-yellow-100' src={user?.photoURL} alt="" />
+                              :
+                              <FaUser title={user.displayName} className='w-[50px] h-[50px] rounded-full text-yellow-100'></FaUser>
+                            }
+                            <button className=' rounded-lg py-1 text-yellow-100 px-2 hover:border' onClick={handleLogOut}>Log out</button>
+                           </div>
+                           :
+                           <div className='flex gap-3 items-center justify-center w-full'>
+                            <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/login' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>LogIn</NavLink></button>
+
+                            <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/register' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>Register</NavLink></button>
+                           </div>
+                           }
+            </div>
+
+
+
+          <div className={`lg:text-xl md:text-xl text-lg flex gap-4 absolute md:static ${open? 'top-20 flex flex-col bg-[#01141F] ml-[-40px] w-full': 'top-[-400px]'}`} >
+
+              <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/services' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>Services</NavLink></button>
+
+              <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/reviews' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>My Reviews</NavLink></button>
+
+              {
+                user && 
+                  <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/addservice' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>Add Service</NavLink></button>
+              }
+
+              <button className=' rounded-lg py-1 px-2 hover:border'><NavLink to='/blog' className={({isActive}) => isActive ? 'text-blue-500' : 'text-yellow-100'}>Blog</NavLink></button>
+
+              
+          </div>
+          <div className='md:hidden h-7 w-7 text-yellow-100' onClick={() => setOpen(!open)}>
+            {
+              open ? <ImCross className='w-full h-full'></ImCross> : <FaBars className='w-full h-full'></FaBars>
+            }
+          </div>
+        </nav>
     );
 };
 
