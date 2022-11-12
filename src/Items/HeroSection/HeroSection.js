@@ -9,7 +9,7 @@ const HeroSection = () => {
                 <div className='lg:w-1/2'>
                 <h1 className='text-7xl font-sans text-white font-bold text-start mb-8'>
                         Hi! I'm Arif, <br />
-                        Wedding photograper
+                        Wedding photographer
                 </h1>
                 <p className='text-3xl font-semibold text-slate-500 text-start'>Based in Amsterdam, I specialize in conceptual photography and love to take photos with creativity and passion.</p>
                 <button className='text-2xl font-semibold bg-yellow-100 p-3 mt-6 rounded'>Explore my work</button>

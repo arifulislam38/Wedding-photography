@@ -34,7 +34,7 @@ const Update = () => {
 
 
     return (
-        <div className='py-32 sm:my-10 w-full h-screen flex justify-center items-center'>
+        <div className='py-32 px-8 sm:my-10 w-full h-screen flex justify-center items-center'>
             <form onSubmit={handleSubmit} className='lg:w-1/2  flex flex-col gap-5 border p-4 rounded'>
                 <textarea className='w-full rounded text-2xl font-semibold' name="text" id="" cols="30" rows="10"/>
                 <button className='p-4 border text-2xl font-serif bg-yellow-100 rounded' type="submit">Update</button>

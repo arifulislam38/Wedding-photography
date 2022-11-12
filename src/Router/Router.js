@@ -3,6 +3,7 @@ import Update from "../Items/udate/Update";
 import Main from "../Layouts/Main/Main";
 import AddService from "../Pages/AddService/AddService";
 import Blog from "../Pages/Blog/Blog";
+import ErrorPage from "../Pages/ErrorElement/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import ProtectedPage from "../Pages/ProtectedPage/ProtectedPage";
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
